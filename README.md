@@ -1,0 +1,1 @@
+# open-team-sports-data-standard
