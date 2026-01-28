@@ -1,0 +1,9 @@
+{
+  "type": "roster_snapshot",
+  "id": "rst_001",
+  "source": "benchli",
+  "team_id": "team_001",
+  "game_id": "gme_001",
+  "captured_at": "2026-02-01T18:00:00Z",
+  "player_ids": ["ply_001"]
+}

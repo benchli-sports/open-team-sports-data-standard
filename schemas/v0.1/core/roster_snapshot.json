@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otsd.dev/schemas/v0.1/core/roster_snapshot.json",
+  "title": "RosterSnapshot",
+  "allOf": [
+    { "$ref": "common.json#/definitions/baseEntity" },
+    {
+      "type": "object",
+      "required": ["team_id", "game_id", "captured_at", "player_ids"],
+      "properties": {
+        "type": { "const": "roster_snapshot" },
+        "team_id": { "type": "string", "minLength": 1 },
+        "game_id": { "type": "string", "minLength": 1 },
+        "captured_at": { "type": "string", "format": "date-time" },
+        "player_ids": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  ]
+}

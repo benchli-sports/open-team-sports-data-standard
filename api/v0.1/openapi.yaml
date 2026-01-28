@@ -1,0 +1,92 @@
+openapi: 3.0.3
+info:
+  title: OTSD API Profile
+  version: "0.1"
+  description: >
+    Optional API profile for systems implementing OTSD. Focuses on portability export/import and
+    basic resource reads. AuthN/Z is out of scope; implementers enforce it.
+
+paths:
+  /otsd/v0.1/export:
+    post:
+      summary: Create an OTSD export package (ZIP)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [team_ids]
+              properties:
+                team_ids:
+                  type: array
+                  items: { type: string }
+                season_ids:
+                  type: array
+                  items: { type: string }
+                time_range:
+                  type: object
+                  properties:
+                    start_at: { type: string, format: date-time }
+                    end_at: { type: string, format: date-time }
+      responses:
+        "200":
+          description: OTSD ZIP export package
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+
+  /otsd/v0.1/import:
+    post:
+      summary: Import an OTSD export package (ZIP)
+      requestBody:
+        required: true
+        content:
+          application/zip:
+            schema:
+              type: string
+              format: binary
+      responses:
+        "202":
+          description: Import accepted (async recommended)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  import_id: { type: string }
+                  status: { type: string }
+
+  /otsd/v0.1/players/{player_id}:
+    get:
+      summary: Get a Player
+      parameters:
+        - in: path
+          name: player_id
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Player
+          content:
+            application/json:
+              schema:
+                $ref: "../../schemas/v0.1/core/player.json"
+
+  /otsd/v0.1/teams/{team_id}:
+    get:
+      summary: Get a Team
+      parameters:
+        - in: path
+          name: team_id
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Team
+          content:
+            application/json:
+              schema:
+                $ref: "../../schemas/v0.1/core/team.json"

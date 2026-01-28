@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otsd.dev/schemas/v0.1/core/season.json",
+  "title": "Season",
+  "allOf": [
+    { "$ref": "common.json#/definitions/baseEntity" },
+    {
+      "type": "object",
+      "required": ["name", "start_date", "end_date"],
+      "properties": {
+        "type": { "const": "season" },
+        "name": { "type": "string", "minLength": 1 },
+        "start_date": { "type": "string", "format": "date" },
+        "end_date": { "type": "string", "format": "date" }
+      },
+      "additionalProperties": true
+    }
+  ]
+}

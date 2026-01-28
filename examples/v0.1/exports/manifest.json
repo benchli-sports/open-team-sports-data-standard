@@ -1,0 +1,20 @@
+{
+  "otsd_version": "0.1",
+  "package_id": "pkg_2026-02-02_benchli_team_001",
+  "created_at": "2026-02-02T10:00:00Z",
+  "producer": { "name": "benchli", "version": "0.0.1", "contact": "support@example.com" },
+  "scope": { "team_ids": ["team_001"], "season_ids": [] },
+  "files": [
+    { "path": "records/core.ndjson", "sha256": "0000000000000000000000000000000000000000000000000000000000000000", "bytes": 1234 }
+  ],
+  "counts": {
+    "player": 1,
+    "team": 1,
+    "membership": 1,
+    "game": 1,
+    "roster_snapshot": 1,
+    "appearance": 1,
+    "stat_line": 1
+  },
+  "missing_references": []
+}

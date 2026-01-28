@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otsd.dev/schemas/v0.1/core/venue.json",
+  "title": "Venue",
+  "allOf": [
+    { "$ref": "common.json#/definitions/baseEntity" },
+    {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "type": { "const": "venue" },
+        "name": { "type": "string", "minLength": 1 },
+        "address": { "type": "string" },
+        "city": { "type": "string" },
+        "country": { "type": "string" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" }
+      },
+      "additionalProperties": true
+    }
+  ]
+}

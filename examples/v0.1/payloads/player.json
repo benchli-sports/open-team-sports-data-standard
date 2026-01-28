@@ -1,0 +1,9 @@
+{
+  "type": "player",
+  "id": "ply_001",
+  "source": "benchli",
+  "external_ids": [{ "system": "email", "id": "player@example.com" }],
+  "first_name": "Alex",
+  "last_name": "Meyer",
+  "birth_year": 1992
+}

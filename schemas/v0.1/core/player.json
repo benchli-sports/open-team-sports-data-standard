@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otsd.dev/schemas/v0.1/core/player.json",
+  "title": "Player",
+  "allOf": [
+    { "$ref": "common.json#/definitions/baseEntity" },
+    {
+      "type": "object",
+      "required": ["first_name", "last_name"],
+      "properties": {
+        "type": { "const": "player" },
+        "first_name": { "type": "string", "minLength": 1 },
+        "last_name": { "type": "string", "minLength": 1 },
+        "display_name": { "type": "string" },
+        "birth_year": { "type": "integer", "minimum": 1900, "maximum": 2100 },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "profile_image": { "$ref": "common.json#/definitions/mediaRef" }
+      },
+      "additionalProperties": true
+    }
+  ]
+}

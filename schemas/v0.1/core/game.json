@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otsd.dev/schemas/v0.1/core/game.json",
+  "title": "Game",
+  "allOf": [
+    { "$ref": "event.json" },
+    {
+      "type": "object",
+      "properties": {
+        "type": { "const": "game" },
+        "category": { "const": "other" },
+        "home_away": { "type": "string", "enum": ["home", "away", "neutral"] },
+        "opponent_name": { "type": "string" },
+        "opponent_team_id": { "type": ["string", "null"] },
+        "score_for": { "type": ["integer", "null"], "minimum": 0 },
+        "score_against": { "type": ["integer", "null"], "minimum": 0 },
+        "status": {
+          "type": "string",
+          "enum": ["scheduled", "completed", "cancelled", "forfeit"]
+        }
+      },
+      "required": ["status"],
+      "additionalProperties": true
+    }
+  ]
+}

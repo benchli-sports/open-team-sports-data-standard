@@ -1,0 +1,20 @@
+{
+  "type": "stat_line",
+  "id": "stl_001",
+  "source": "benchli",
+  "scope": "appearance",
+  "appearance_id": "app_001",
+  "player_id": "ply_001",
+  "team_id": "team_001",
+  "game_id": "gme_001",
+  "metrics": {
+    "goals": 2,
+    "assists": 1,
+    "shots": 5
+  },
+  "recorded_at": "2026-02-01T21:05:00Z",
+  "sport": "ice_hockey",
+  "extensions": {
+    "otsd.ice_hockey": { "plus_minus": 1, "pim": 2 }
+  }
+}

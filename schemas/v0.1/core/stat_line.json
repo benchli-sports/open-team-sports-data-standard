@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otsd.dev/schemas/v0.1/core/stat_line.json",
+  "title": "StatLine",
+  "allOf": [
+    { "$ref": "common.json#/definitions/baseEntity" },
+    {
+      "type": "object",
+      "required": ["scope", "metrics"],
+      "properties": {
+        "type": { "const": "stat_line" },
+        "scope": {
+          "type": "string",
+          "enum": ["appearance", "game_player", "game_team", "season_player", "season_team"]
+        },
+        "appearance_id": { "type": ["string", "null"] },
+        "player_id": { "type": ["string", "null"] },
+        "team_id": { "type": ["string", "null"] },
+        "game_id": { "type": ["string", "null"] },
+        "season_id": { "type": ["string", "null"] },
+        "metrics": {
+          "type": "object",
+          "additionalProperties": {
+            "oneOf": [
+              { "type": "number" },
+              { "type": "integer" },
+              { "type": "string" },
+              { "type": "boolean" },
+              { "type": "null" }
+            ]
+          }
+        },
+        "recorded_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": true
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otsd.dev/schemas/v0.1/export/package_manifest.json",
+  "title": "OTSD Export Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["otsd_version", "package_id", "created_at", "producer", "scope", "files", "counts"],
+  "properties": {
+    "otsd_version": { "type": "string", "const": "0.1" },
+    "package_id": { "type": "string", "minLength": 1 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "producer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" },
+        "contact": { "type": "string" }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["team_ids"],
+      "properties": {
+        "team_ids": { "type": "array", "items": { "type": "string" } },
+        "season_ids": { "type": "array", "items": { "type": "string" }, "default": [] },
+        "time_range": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "start_at": { "type": "string", "format": "date-time" },
+            "end_at": { "type": "string", "format": "date-time" }
+          }
+        }
+      }
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256", "bytes"],
+        "properties": {
+          "path": { "type": "string" },
+          "sha256": { "type": "string", "minLength": 64, "maxLength": 64 },
+          "bytes": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "missing_references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["ref", "reason"],
+        "properties": {
+          "ref": { "type": "string" },
+          "reason": { "type": "string" }
+        }
+      },
+      "default": []
+    }
+  }
+}

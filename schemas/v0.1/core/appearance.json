@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otsd.dev/schemas/v0.1/core/appearance.json",
+  "title": "Appearance",
+  "allOf": [
+    { "$ref": "common.json#/definitions/baseEntity" },
+    {
+      "type": "object",
+      "required": ["player_id", "team_id", "game_id", "played"],
+      "properties": {
+        "type": { "const": "appearance" },
+        "player_id": { "type": "string", "minLength": 1 },
+        "team_id": { "type": "string", "minLength": 1 },
+        "game_id": { "type": "string", "minLength": 1 },
+        "played": { "type": "boolean" },
+        "starter": { "type": ["boolean", "null"] },
+        "position": { "type": ["string", "null"] },
+        "minutes": { "type": ["integer", "null"], "minimum": 0 }
+      },
+      "additionalProperties": true
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otsd.dev/schemas/v0.1/core/team.json",
+  "title": "Team",
+  "allOf": [
+    { "$ref": "common.json#/definitions/baseEntity" },
+    {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "type": { "const": "team" },
+        "name": { "type": "string", "minLength": 1 },
+        "short_name": { "type": "string" },
+        "organization_id": { "type": ["string", "null"] },
+        "logo": { "$ref": "common.json#/definitions/mediaRef" },
+        "home_venue_id": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    }
+  ]
+}

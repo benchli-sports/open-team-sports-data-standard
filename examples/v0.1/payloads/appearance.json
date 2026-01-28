@@ -1,0 +1,16 @@
+{
+  "type": "appearance",
+  "id": "app_001",
+  "source": "benchli",
+  "player_id": "ply_001",
+  "team_id": "team_001",
+  "game_id": "gme_001",
+  "played": true,
+  "starter": true,
+  "position": "C",
+  "minutes": 45,
+  "sport": "ice_hockey",
+  "extensions": {
+    "otsd.ice_hockey": { "line": "2" }
+  }
+}

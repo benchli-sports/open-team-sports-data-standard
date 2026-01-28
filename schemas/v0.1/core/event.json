@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otsd.dev/schemas/v0.1/core/event.json",
+  "title": "Event",
+  "allOf": [
+    { "$ref": "common.json#/definitions/baseEntity" },
+    {
+      "type": "object",
+      "required": ["team_id", "category", "start_at", "end_at", "title"],
+      "properties": {
+        "type": { "const": "event" },
+        "team_id": { "type": "string", "minLength": 1 },
+        "category": {
+          "type": "string",
+          "enum": ["training", "meeting", "travel", "social", "fundraiser", "other"]
+        },
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string" },
+        "start_at": { "type": "string", "format": "date-time" },
+        "end_at": { "type": "string", "format": "date-time" },
+        "venue_id": { "type": ["string", "null"] },
+        "season_id": { "type": ["string", "null"] },
+        "competition_id": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    }
+  ]
+}

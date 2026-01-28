@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otsd.dev/schemas/v0.1/core/common.json",
+  "title": "OTSD Common Types",
+  "type": "object",
+  "definitions": {
+    "externalId": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system", "id"],
+      "properties": {
+        "system": { "type": "string", "minLength": 1 },
+        "id": { "type": "string", "minLength": 1 }
+      }
+    },
+    "baseEntity": {
+      "type": "object",
+      "required": ["id", "source"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "source": { "type": "string", "minLength": 1 },
+        "external_ids": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/externalId" },
+          "default": []
+        },
+        "sport": { "type": "string" },
+        "extensions": {
+          "type": "object",
+          "additionalProperties": true,
+          "default": {}
+        },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": true
+    },
+    "mediaRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "minLength": 64, "maxLength": 64 }
+      }
+    }
+  }
+}

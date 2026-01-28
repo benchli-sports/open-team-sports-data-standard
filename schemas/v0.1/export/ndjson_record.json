@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otsd.dev/schemas/v0.1/export/ndjson_record.json",
+  "title": "OTSD NDJSON Record Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["type", "schema_version", "data"],
+  "properties": {
+    "type": { "type": "string", "minLength": 1 },
+    "schema_version": { "type": "string", "const": "0.1" },
+    "data": { "type": "object" }
+  }
+}

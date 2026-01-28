@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otsd.dev/schemas/v0.1/core/audit_event.json",
+  "title": "AuditEvent",
+  "allOf": [
+    { "$ref": "common.json#/definitions/baseEntity" },
+    {
+      "type": "object",
+      "required": ["action", "occurred_at"],
+      "properties": {
+        "type": { "const": "audit_event" },
+        "action": { "type": "string", "minLength": 1 },
+        "actor_id": { "type": ["string", "null"] },
+        "actor_type": { "type": ["string", "null"] },
+        "entity_type": { "type": ["string", "null"] },
+        "entity_id": { "type": ["string", "null"] },
+        "occurred_at": { "type": "string", "format": "date-time" },
+        "details": { "type": "object", "additionalProperties": true }
+      },
+      "additionalProperties": true
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otsd.dev/schemas/v0.1/core/payment_record.json",
+  "title": "PaymentRecord",
+  "allOf": [
+    { "$ref": "common.json#/definitions/baseEntity" },
+    {
+      "type": "object",
+      "required": ["team_id", "kind", "currency", "amount", "status"],
+      "properties": {
+        "type": { "const": "payment_record" },
+        "team_id": { "type": "string", "minLength": 1 },
+        "player_id": { "type": ["string", "null"] },
+        "kind": { "type": "string", "enum": ["fee", "dues", "invoice", "refund", "other"] },
+        "currency": { "type": "string", "minLength": 3, "maxLength": 3 },
+        "amount": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "paid", "cancelled", "refunded"] },
+        "reference": { "type": "string" },
+        "occurred_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": true
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "type": "membership",
+  "id": "mbr_001",
+  "source": "benchli",
+  "player_id": "ply_001",
+  "team_id": "team_001",
+  "status": "active",
+  "roles": ["captain"],
+  "jersey_numbers": [19]
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otsd.dev/schemas/v0.1/core/membership.json",
+  "title": "Membership",
+  "allOf": [
+    { "$ref": "common.json#/definitions/baseEntity" },
+    {
+      "type": "object",
+      "required": ["player_id", "team_id", "status"],
+      "properties": {
+        "type": { "const": "membership" },
+        "player_id": { "type": "string", "minLength": 1 },
+        "team_id": { "type": "string", "minLength": 1 },
+        "status": {
+          "type": "string",
+          "enum": ["active", "inactive", "guest", "alumni"]
+        },
+        "roles": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": []
+        },
+        "jersey_numbers": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 0, "maximum": 99 },
+          "default": []
+        },
+        "jersey_size": { "type": ["string", "null"] },
+        "start_date": { "type": "string", "format": "date" },
+        "end_date": { "type": ["string", "null"], "format": "date" }
+      },
+      "additionalProperties": true
+    }
+  ]
+}
