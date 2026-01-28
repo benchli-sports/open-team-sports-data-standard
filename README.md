@@ -39,7 +39,7 @@ OTSD is designed to be sport-agnostic while explicitly supporting:
 
 ## Reference Implementation
 
-Benchli uses OTSD in production as its native data interchange format, proving the standard's ability to handle:
+[benchli](https://benchli.com/) uses OTSD in production as its native data interchange format, proving the standard's ability to handle:
 - Complex multi-sport organizations
 - Real-time mobile client requirements
 - Global federation of venue and competition data

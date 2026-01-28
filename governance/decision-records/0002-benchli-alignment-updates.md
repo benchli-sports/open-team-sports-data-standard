@@ -1,10 +1,10 @@
-# 0002 - Benchli Alignment Updates
+# 0002 - benchli Alignment Updates
 
 ## Status
 Accepted
 
 ## Context
-Benchli has been using OTSD v0.1 in production and identified several areas where targeted refinements would materially improve:
+benchli has been using OTSD v0.1 in production and identified several areas where targeted refinements would materially improve:
 - **Interoperability**: Absolute vs team-relative scoring perspectives
 - **Client efficiency**: Denormalized participation summaries for fast UI rendering
 - **Real-world adoption**: Commentary fields, flexible identifiers, structured extensions
@@ -122,7 +122,7 @@ Enhance OTSD v0.1 specification with the following optional additions:
 ## Consequences
 ### Positive
 - OTSD stays thin and portable
-- Benchli fits naturally as reference implementation
+- benchli fits naturally as reference implementation
 - Third-party clients get faster rendering, clearer semantics, fewer implicit assumptions
 - Avoids over-modeling too early
 
@@ -134,5 +134,5 @@ Enhance OTSD v0.1 specification with the following optional additions:
 - None identified; all changes are optional and additive
 
 ## References
-- Benchli alignment review document (2026-01-28)
+- benchli alignment review document (2026-01-28)
 - OTSD v0.1 specification
