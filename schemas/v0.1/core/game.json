@@ -14,6 +14,18 @@
         "opponent_team_id": { "type": ["string", "null"] },
         "score_for": { "type": ["integer", "null"], "minimum": 0 },
         "score_against": { "type": ["integer", "null"], "minimum": 0 },
+        "home_score": { "type": ["integer", "null"], "minimum": 0 },
+        "away_score": { "type": ["integer", "null"], "minimum": 0 },
+        "participation_summary": {
+          "type": ["object", "null"],
+          "properties": {
+            "yes": { "type": "array", "items": { "type": "string" } },
+            "no": { "type": "array", "items": { "type": "string" } },
+            "maybe": { "type": "array", "items": { "type": "string" } },
+            "unknown": { "type": "array", "items": { "type": "string" } }
+          },
+          "additionalProperties": false
+        },
         "status": {
           "type": "string",
           "enum": ["scheduled", "completed", "cancelled", "forfeit"]

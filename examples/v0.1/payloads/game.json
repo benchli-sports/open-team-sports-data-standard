@@ -15,6 +15,24 @@
   "opponent_team_id": null,
   "score_for": 4,
   "score_against": 3,
+  "home_score": 4,
+  "away_score": 3,
+  "participation_summary": {
+    "yes": [
+      "ply_001",
+      "ply_002",
+      "ply_003",
+      "ply_004",
+      "ply_005"
+    ],
+    "no": [
+      "ply_006"
+    ],
+    "maybe": [
+      "ply_007"
+    ],
+    "unknown": []
+  },
   "status": "completed",
   "sport": "ice_hockey"
 }

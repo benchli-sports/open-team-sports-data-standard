@@ -12,9 +12,18 @@
     "assists": 1,
     "shots": 5
   },
+  "notes": "Strong performance in second period, game-winning goal at 18:42",
   "recorded_at": "2026-02-01T21:05:00Z",
   "sport": "ice_hockey",
   "extensions": {
-    "otsd.ice_hockey": { "plus_minus": 1, "pim": 2 }
+    "otsd.ice_hockey": {
+      "version": "1.0",
+      "data": {
+        "plus_minus": 1,
+        "pim": 2,
+        "faceoff_wins": 8,
+        "faceoff_losses": 5
+      }
+    }
   }
 }
