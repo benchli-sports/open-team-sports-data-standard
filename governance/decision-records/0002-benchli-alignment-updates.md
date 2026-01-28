@@ -73,7 +73,47 @@ Enhance OTSD v0.1 specification with the following optional additions:
 - Mirrors how OpenAPI vendor extensions evolved (`x-*` → conventions)
 - Keeps presentation metadata out of core while providing UI clients a predictable hook
 
-### 6. Stat Cataloging (Deferred)
+### 6. Competition Shape (Core Schema Enhancement)
+**Add to `game.json`:**
+- `competition_shape` (optional enum: "atomic" | "hierarchical")
+- `competition_units` (optional array of strings)
+
+**Rationale:**
+- Different sports have fundamentally different competitive structures
+- **Atomic sports** (ice hockey, basketball, football): single competitive unit with timing segments
+- **Hierarchical sports** (cricket, baseball, tennis): nested competitive units with independent outcomes
+- Core fields provide discoverability; extensions provide sport-specific details
+- Enables clients to understand competitive structure without parsing sport-specific extensions
+- Critical for global sports adoption (cricket, baseball have billions of fans)
+
+**Examples:**
+```json
+// Ice hockey (atomic)
+{
+  "competition_shape": "atomic",
+  "extensions": {
+    "otsd.ice_hockey": {
+      "data": { "periods": 3, "period_length_minutes": 20 }
+    }
+  }
+}
+
+// Cricket (hierarchical)
+{
+  "competition_shape": "hierarchical",
+  "competition_units": ["match", "innings", "over", "ball"],
+  "extensions": {
+    "otsd.cricket": {
+      "data": {
+        "variant": "t20",
+        "innings": [...]
+      }
+    }
+  }
+}
+```
+
+### 7. Stat Cataloging (Deferred)
 **Decision:** Introduce as optional, non-core extension in future
 - Tiered stats (simple/detailed/advanced) are presentation metadata
 - Keeping out of core avoids premature standardization

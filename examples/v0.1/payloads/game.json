@@ -33,6 +33,7 @@
     ],
     "unknown": []
   },
+  "competition_shape": "atomic",
   "status": "completed",
   "sport": "ice_hockey"
 }

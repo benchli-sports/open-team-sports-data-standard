@@ -3,35 +3,131 @@
   "$id": "https://otsd.dev/schemas/v0.1/core/game.json",
   "title": "Game",
   "allOf": [
-    { "$ref": "event.json" },
+    {
+      "$ref": "event.json"
+    },
     {
       "type": "object",
       "properties": {
-        "type": { "const": "game" },
-        "category": { "const": "other" },
-        "home_away": { "type": "string", "enum": ["home", "away", "neutral"] },
-        "opponent_name": { "type": "string" },
-        "opponent_team_id": { "type": ["string", "null"] },
-        "score_for": { "type": ["integer", "null"], "minimum": 0 },
-        "score_against": { "type": ["integer", "null"], "minimum": 0 },
-        "home_score": { "type": ["integer", "null"], "minimum": 0 },
-        "away_score": { "type": ["integer", "null"], "minimum": 0 },
+        "type": {
+          "const": "game"
+        },
+        "category": {
+          "const": "other"
+        },
+        "home_away": {
+          "type": "string",
+          "enum": [
+            "home",
+            "away",
+            "neutral"
+          ]
+        },
+        "opponent_name": {
+          "type": "string"
+        },
+        "opponent_team_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "score_for": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "score_against": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "home_score": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "away_score": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
         "participation_summary": {
-          "type": ["object", "null"],
+          "type": [
+            "object",
+            "null"
+          ],
           "properties": {
-            "yes": { "type": "array", "items": { "type": "string" } },
-            "no": { "type": "array", "items": { "type": "string" } },
-            "maybe": { "type": "array", "items": { "type": "string" } },
-            "unknown": { "type": "array", "items": { "type": "string" } }
+            "yes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "no": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "maybe": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "unknown": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
           },
           "additionalProperties": false
         },
+        "competition_shape": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "atomic",
+            "hierarchical",
+            null
+          ],
+          "description": "Indicates whether the competitive event is atomic (single unit) or hierarchical (nested competitive units)"
+        },
+        "competition_units": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "Ordered list of competitive unit hierarchy (e.g., ['match', 'innings', 'over', 'ball'] for cricket)"
+        },
         "status": {
           "type": "string",
-          "enum": ["scheduled", "completed", "cancelled", "forfeit"]
+          "enum": [
+            "scheduled",
+            "completed",
+            "cancelled",
+            "forfeit"
+          ]
         }
       },
-      "required": ["status"],
+      "required": [
+        "status"
+      ],
       "additionalProperties": true
     }
   ]

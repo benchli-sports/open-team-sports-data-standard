@@ -1,0 +1,84 @@
+{
+    "type": "game",
+    "id": "gme_cricket_001",
+    "source": "benchli",
+    "team_id": "team_mumbai",
+    "title": "Mumbai Indians vs Chennai Super Kings",
+    "description": "IPL 2026 - Match 15",
+    "start_at": "2026-03-15T19:30:00Z",
+    "end_at": "2026-03-15T23:00:00Z",
+    "venue_id": "wankhede_stadium",
+    "season_id": "ipl_2026",
+    "competition_id": "ipl_2026",
+    "home_away": "home",
+    "opponent_name": "Chennai Super Kings",
+    "opponent_team_id": "team_chennai",
+    "competition_shape": "hierarchical",
+    "competition_units": [
+        "match",
+        "innings",
+        "over",
+        "ball"
+    ],
+    "status": "completed",
+    "sport": "cricket",
+    "extensions": {
+        "otsd.cricket": {
+            "version": "1.0",
+            "data": {
+                "shape": "hierarchical",
+                "variant": "t20",
+                "root_unit": "match",
+                "units": [
+                    "match",
+                    "innings",
+                    "over",
+                    "ball"
+                ],
+                "outcome_level": "match",
+                "toss": {
+                    "winner_team_id": "team_mumbai",
+                    "decision": "bat"
+                },
+                "innings": [
+                    {
+                        "number": 1,
+                        "batting_team_id": "team_mumbai",
+                        "bowling_team_id": "team_chennai",
+                        "runs": 185,
+                        "wickets": 6,
+                        "overs": 20.0,
+                        "extras": {
+                            "wides": 8,
+                            "no_balls": 3,
+                            "byes": 2,
+                            "leg_byes": 1,
+                            "total": 14
+                        }
+                    },
+                    {
+                        "number": 2,
+                        "batting_team_id": "team_chennai",
+                        "bowling_team_id": "team_mumbai",
+                        "runs": 178,
+                        "wickets": 8,
+                        "overs": 20.0,
+                        "extras": {
+                            "wides": 5,
+                            "no_balls": 2,
+                            "byes": 0,
+                            "leg_byes": 3,
+                            "total": 10
+                        }
+                    }
+                ],
+                "result": {
+                    "winner_team_id": "team_mumbai",
+                    "margin_type": "runs",
+                    "margin_value": 7,
+                    "description": "Mumbai Indians won by 7 runs"
+                }
+            }
+        }
+    }
+}

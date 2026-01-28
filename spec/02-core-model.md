@@ -78,3 +78,119 @@ The optional `notes` field provides space for:
 - Game report annotations
 - Any contextual information about the statistics
 
+## Competition Shapes
+
+Different sports have fundamentally different competitive structures. OTSD recognizes two primary patterns:
+
+### Atomic Competitive Events
+
+Sports where a single match/game is the primary competitive unit with simple internal structure.
+
+**Examples:** Ice hockey, basketball, football (soccer), rugby
+
+**Characteristics:**
+- Match is a single competitive unit
+- Internal segments (periods, quarters, halves) are timing divisions, not separate competitive units
+- Outcome determined at match level
+- Score aggregates across segments
+
+**OTSD Modeling:**
+Use `Game` entity with sport-specific segment details in extensions:
+
+```json
+{
+  "type": "game",
+  "title": "Flyers vs Lions",
+  "home_score": 4,
+  "away_score": 3,
+  "status": "completed",
+  "extensions": {
+    "otsd.ice_hockey": {
+      "version": "1.0",
+      "data": {
+        "periods": 3,
+        "period_length_minutes": 20,
+        "overtime_played": false
+      }
+    }
+  }
+}
+```
+
+### Hierarchical Competitive Events
+
+Sports where matches contain nested competitive units with their own outcomes.
+
+**Examples:** Cricket, baseball, tennis (sets/games)
+
+**Characteristics:**
+- Match contains multiple competitive sub-units (innings, sets)
+- Each sub-unit has its own outcome
+- Match outcome derived from sub-unit outcomes
+- Different variants may have different structures (Test vs T20 cricket)
+
+**OTSD Modeling:**
+Use `Game` entity with hierarchical structure in extensions:
+
+```json
+{
+  "type": "game",
+  "title": "Mumbai Indians vs Chennai Super Kings",
+  "status": "completed",
+  "competition_shape": "hierarchical",
+  "competition_units": ["match", "innings", "over", "ball"],
+  "extensions": {
+    "otsd.cricket": {
+      "version": "1.0",
+      "data": {
+        "shape": "hierarchical",
+        "variant": "t20",
+        "root_unit": "match",
+        "units": ["match", "innings", "over", "ball"],
+        "outcome_level": "match",
+        "innings": [
+          {
+            "batting_team": "team_001",
+            "runs": 185,
+            "wickets": 6,
+            "overs": 20.0
+          },
+          {
+            "batting_team": "opponent",
+            "runs": 178,
+            "wickets": 8,
+            "overs": 20.0
+          }
+        ],
+        "result": {
+          "winner": "team_001",
+          "margin": "7 runs"
+        }
+      }
+    }
+  }
+}
+```
+
+### Variant Handling
+
+Sports with multiple competitive formats should document variant-specific rules:
+
+**Cricket variants:**
+- **Test**: 2 innings per team, unlimited overs, multi-day
+- **ODI**: 1 innings per team, 50 overs, single day
+- **T20**: 1 innings per team, 20 overs, ~3 hours
+
+**Baseball variants:**
+- **Standard**: 9 innings
+- **Doubleheader**: 7 innings per game
+
+Extensions should include `variant` field to specify which format applies.
+
+### Best Practices
+
+1. **Atomic sports**: Keep core fields minimal, use extensions for segment details
+2. **Hierarchical sports**: Model full structure in extensions with clear unit hierarchy
+3. **Variants**: Always specify variant when multiple formats exist
+4. **Outcome level**: Document where the competitive outcome is determined (match, set, series)
+
