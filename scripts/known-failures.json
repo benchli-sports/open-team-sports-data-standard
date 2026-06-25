@@ -1,0 +1,4 @@
+{
+  "_comment": "xfail baseline for scripts/validate.js. Each entry is an example case that currently FAILS schema validation due to a known schema defect. CI stays green while reality matches this list. To fix a defect: correct the schema/example, then delete the corresponding entry here and confirm the validator reports the case as PASS. This list is empty because the v0.1 conformance defects (DR-0003) have been fixed.",
+  "known_failures": []
+}

@@ -59,12 +59,9 @@
         "metrics": {
           "type": "object",
           "additionalProperties": {
-            "oneOf": [
+            "anyOf": [
               {
                 "type": "number"
-              },
-              {
-                "type": "integer"
               },
               {
                 "type": "string"

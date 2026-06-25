@@ -23,7 +23,7 @@ Recommended split:
 
 ## manifest.json requirements
 Manifest MUST include:
-- `otsd_version`
+- `schema_version`
 - `package_id`
 - `created_at`
 - `producer`
@@ -31,6 +31,12 @@ Manifest MUST include:
 - `files` with sha256 hashes
 - `counts` by record type
 - `missing_references` if applicable
+
+`scope` declares the export subject: `team_ids` (required) and/or the optional `player_ids` for personal ("your career follows you") exports, plus optional `season_ids` and `time_range`.
+
+> **Note (v0.1):** the package version field is `schema_version` in both the
+> manifest and every NDJSON record envelope. Earlier drafts named the manifest
+> field `otsd_version`; see decision record 0003.
 
 ## Media references
 Entities MAY reference media by relative path within `media/`:

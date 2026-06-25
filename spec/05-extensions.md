@@ -90,6 +90,7 @@ Cricket matches contain innings, which contain overs, which contain individual b
 ```json
 {
   "type": "game",
+  "category": "game",
   "id": "gme_cricket_001",
   "source": "benchli",
   "team_id": "team_mumbai",
@@ -162,6 +163,7 @@ Baseball has innings with top/bottom halves, each representing a competitive uni
 ```json
 {
   "type": "game",
+  "category": "game",
   "id": "gme_baseball_001",
   "source": "benchli",
   "team_id": "team_yankees",
@@ -213,6 +215,7 @@ Tennis matches are won by winning sets, which are won by winning games:
 ```json
 {
   "type": "game",
+  "category": "game",
   "sport": "tennis",
   "extensions": {
     "otsd.tennis": {

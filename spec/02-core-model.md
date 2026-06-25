@@ -12,6 +12,7 @@ OTSD uses a small sport-agnostic core and supports sport-specific extensions.
 - Event
 - Game
 - RosterSnapshot
+- Availability (participation intent / RSVP)
 - Appearance
 - StatLine
 - PaymentRecord (portable ledger record)
@@ -23,6 +24,7 @@ OTSD uses a small sport-agnostic core and supports sport-specific extensions.
 - Game specializes Event
 - RosterSnapshot ties to Game and Team, and lists Player IDs
 - Appearance ties Player to Game (a player "played")
+- Availability ties Player to Game (participation intent / RSVP)
 - StatLine ties to Appearance or Game/Team/Player contexts
 
 ## The "players who play" guarantee
@@ -60,6 +62,9 @@ The optional `participation_summary` field in `game.json` provides denormalized 
 - `unknown`: player IDs with no response
 
 **Important:** This summary is explicitly allowed to be stale and is optimized for fast UI rendering.
+
+### Availability (Intent, per-player)
+The optional `availability` entity is the per-player source of truth for intent. Each record ties a `player_id` to a `game_id` with a `status` (`yes` / `no` / `maybe` / `unknown`), an optional `responded_at` timestamp, and an optional `note`. Producers MAY derive `participation_summary` from the set of `availability` records: the summary is a denormalized (and possibly stale) rollup, while `availability` preserves per-player timestamps and notes.
 
 ### Appearance (Actual)
 The `appearance` entity remains the source of truth for who actually played in a game.
@@ -100,6 +105,7 @@ Use `Game` entity with sport-specific segment details in extensions:
 ```json
 {
   "type": "game",
+  "category": "game",
   "title": "Flyers vs Lions",
   "home_score": 4,
   "away_score": 3,
@@ -135,6 +141,7 @@ Use `Game` entity with hierarchical structure in extensions:
 ```json
 {
   "type": "game",
+  "category": "game",
   "title": "Mumbai Indians vs Chennai Super Kings",
   "status": "completed",
   "competition_shape": "hierarchical",

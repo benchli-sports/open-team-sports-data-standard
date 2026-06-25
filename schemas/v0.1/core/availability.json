@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://otsd.dev/schemas/v0.1/core/availability.json",
+  "title": "Availability",
+  "description": "A single player's participation intent (RSVP) for a game. The source of truth for intent; appearance remains the source of truth for actual participation.",
+  "allOf": [
+    { "$ref": "common.json#/definitions/baseEntity" },
+    {
+      "type": "object",
+      "required": ["player_id", "game_id", "status"],
+      "properties": {
+        "type": { "const": "availability" },
+        "player_id": { "type": "string", "minLength": 1 },
+        "game_id": { "type": "string", "minLength": 1 },
+        "status": {
+          "type": "string",
+          "enum": ["yes", "no", "maybe", "unknown"]
+        },
+        "responded_at": { "type": ["string", "null"], "format": "date-time" },
+        "note": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    }
+  ]
+}

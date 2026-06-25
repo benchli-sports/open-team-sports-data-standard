@@ -1,0 +1,10 @@
+{
+  "type": "availability",
+  "id": "avl_001",
+  "source": "benchli",
+  "player_id": "ply_001",
+  "game_id": "gme_001",
+  "status": "yes",
+  "responded_at": "2026-01-28T09:15:00Z",
+  "note": "Will arrive 10 min late"
+}

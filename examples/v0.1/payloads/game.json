@@ -1,5 +1,6 @@
 {
   "type": "game",
+  "category": "game",
   "id": "gme_001",
   "source": "benchli",
   "team_id": "team_001",

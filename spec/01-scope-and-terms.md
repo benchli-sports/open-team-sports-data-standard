@@ -3,7 +3,7 @@
 ## In scope
 - Teams, players, memberships and roles
 - Events (trainings, meetings, travel) and games
-- Roster snapshots and player appearances
+- Roster snapshots, availability (RSVP), and player appearances
 - Stats as portable records
 - Venues, competitions, seasons
 - Portability export package format
@@ -21,4 +21,5 @@
 - **Game**: an Event with competitive context and results.
 - **RosterSnapshot**: who was selected/eligible at a point in time.
 - **Appearance**: a Player participated in a Game.
+- **Availability**: a Player's participation intent (RSVP) for a Game.
 - **StatLine**: stats recorded for a Player, Team, or Game context.

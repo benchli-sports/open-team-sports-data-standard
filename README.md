@@ -7,7 +7,7 @@ OTSD is an open specification for **portable team sports operational data**. It 
 OTSD goes beyond simple game results to model the operational reality of team sports:
 
 - **Global Competition Modeling**: Support for both **atomic** (Ice Hockey, Football) and **hierarchical** (Cricket, Baseball, Tennis) competitive structures.
-- **Participation Lifecycle**: Distinguishes between **Intent** (RSVP summaries for efficiency) and **Actual** (Appearances for historical record).
+- **Participation Lifecycle**: Distinguishes between **Intent** (per-player `availability`/RSVP records, plus denormalized summaries for efficiency) and **Actual** (Appearances for historical record).
 - **Flexible Scoring**: Supports both absolute (`home_score`) and team-relative (`score_for`) perspectives.
 - **Portable Stats**: Canonical `metrics` container with optional commentary and sport-specific extensions.
 - **Identity Federation**: Flexible ID support (Opaque, URNs, Slugs) to enable cross-system reconciliation.

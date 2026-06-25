@@ -13,7 +13,7 @@
           "const": "game"
         },
         "category": {
-          "const": "other"
+          "const": "game"
         },
         "home_away": {
           "type": "string",
