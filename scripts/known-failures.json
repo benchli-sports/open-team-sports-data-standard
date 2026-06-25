@@ -1,0 +1,35 @@
+{
+  "_comment": "xfail baseline for scripts/validate.js. Each entry is an example case that currently FAILS schema validation due to a known v0.1 schema defect. CI stays green while reality matches this list. To fix a defect: correct the schema/example, then delete the corresponding entry here and confirm the validator reports the case as PASS.",
+  "known_failures": [
+    {
+      "id": "payloads/game.json",
+      "defect": "DEFECT-1 game.json unsatisfiable: inherits type const 'event' and required 'category' from event.json",
+      "detail": "game.json (allOf -> event.json) inherits type const 'event' while also pinning type const 'game' (impossible), and inherits required 'category' (which game.json pins to const 'other') while the example omits it.",
+      "refs": ["schemas/v0.1/core/game.json", "schemas/v0.1/core/event.json"]
+    },
+    {
+      "id": "payloads/game_cricket.json",
+      "defect": "DEFECT-1 game.json unsatisfiable (type const 'event' + required 'category')",
+      "detail": "Same root cause as payloads/game.json.",
+      "refs": ["schemas/v0.1/core/game.json", "schemas/v0.1/core/event.json"]
+    },
+    {
+      "id": "payloads/stat_line.json",
+      "defect": "DEFECT-2 stat_line.json metrics oneOf rejects integers",
+      "detail": "metrics additionalProperties uses oneOf:[number,integer,...]; an integer matches both number and integer, so oneOf (exactly-one) fails for every integer metric. Should be anyOf or a type array.",
+      "refs": ["schemas/v0.1/core/stat_line.json"]
+    },
+    {
+      "id": "exports/records.core.ndjson:4 (data:game)",
+      "defect": "DEFECT-1 game.json unsatisfiable (type const 'event' + required 'category')",
+      "detail": "The game record inside the example export package fails for the same reason as payloads/game.json.",
+      "refs": ["schemas/v0.1/core/game.json", "schemas/v0.1/core/event.json"]
+    },
+    {
+      "id": "exports/records.core.ndjson:7 (data:stat_line)",
+      "defect": "DEFECT-2 stat_line.json metrics oneOf rejects integers",
+      "detail": "The stat_line record inside the example export package fails for the same reason as payloads/stat_line.json.",
+      "refs": ["schemas/v0.1/core/stat_line.json"]
+    }
+  ]
+}

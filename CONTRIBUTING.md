@@ -14,3 +14,8 @@ Thanks for contributing.
 
 ## Validation
 - Any schema change should keep examples valid (or update examples alongside).
+- Run `npm install` once, then `npm test` to validate every example payload and the
+  example export package against the v0.1 JSON Schemas. CI runs the same check.
+- Known schema defects are tracked as an xfail baseline in
+  `scripts/known-failures.json`. When you fix a defect, delete its baseline entry;
+  the validator will confirm the example now passes (and fail if it does not).
