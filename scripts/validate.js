@@ -52,6 +52,7 @@ const TYPE_TO_SCHEMA = {
   roster_snapshot: 'roster_snapshot.json',
   appearance: 'appearance.json',
   stat_line: 'stat_line.json',
+  availability: 'availability.json',
   payment_record: 'payment_record.json',
   audit_event: 'audit_event.json',
 };

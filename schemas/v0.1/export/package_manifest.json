@@ -4,9 +4,9 @@
   "title": "OTSD Export Manifest",
   "type": "object",
   "additionalProperties": false,
-  "required": ["otsd_version", "package_id", "created_at", "producer", "scope", "files", "counts"],
+  "required": ["schema_version", "package_id", "created_at", "producer", "scope", "files", "counts"],
   "properties": {
-    "otsd_version": { "type": "string", "const": "0.1" },
+    "schema_version": { "type": "string", "const": "0.1" },
     "package_id": { "type": "string", "minLength": 1 },
     "created_at": { "type": "string", "format": "date-time" },
     "producer": {
@@ -25,6 +25,7 @@
       "required": ["team_ids"],
       "properties": {
         "team_ids": { "type": "array", "items": { "type": "string" } },
+        "player_ids": { "type": "array", "items": { "type": "string" }, "default": [] },
         "season_ids": { "type": "array", "items": { "type": "string" }, "default": [] },
         "time_range": {
           "type": "object",

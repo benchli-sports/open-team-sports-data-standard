@@ -16,7 +16,10 @@
         "amount": { "type": "number" },
         "status": { "type": "string", "enum": ["pending", "paid", "cancelled", "refunded"] },
         "reference": { "type": "string" },
-        "occurred_at": { "type": "string", "format": "date-time" }
+        "occurred_at": { "type": "string", "format": "date-time" },
+        "request_id": { "type": ["string", "null"] },
+        "parent_id": { "type": ["string", "null"] },
+        "event_id": { "type": ["string", "null"] }
       },
       "additionalProperties": true
     }

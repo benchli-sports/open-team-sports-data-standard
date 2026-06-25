@@ -15,7 +15,7 @@
         "played": { "type": "boolean" },
         "starter": { "type": ["boolean", "null"] },
         "position": { "type": ["string", "null"] },
-        "minutes": { "type": ["integer", "null"], "minimum": 0 }
+        "minutes": { "type": ["number", "null"], "minimum": 0 }
       },
       "additionalProperties": true
     }
